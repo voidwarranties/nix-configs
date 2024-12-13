@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }: let
+{ config, lib, pkgs, inputs, ... }: let
   #backtab = pkgs.callPackage ./backtab {};
   #tab-ui = pkgs.libsForQt5.callPackage ../ext/tab-ui {};
 in
@@ -16,7 +16,7 @@ in
   virtualisation.vmVariant = {
     virtualisation = {
       memorySize = 4096;
-      cores = 3;
+      cores = 4;
     };
   };
 
@@ -63,7 +63,12 @@ in
     xkb.variant = "altgr-intl";
 
     windowManager.i3.enable = true;
-    # windowManager.i3.configFile = ./i3config;
+    windowManager.i3.configFile = ./i3config;
+  };
+
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "testuser";
   };
 
   # networking
@@ -76,7 +81,8 @@ in
     vim
     wget
     #backtab
-    # tab-ui
+    #tab-ui
+    inputs.self.packages.x86_64-linux.tab-ui
   ];
 
   # users

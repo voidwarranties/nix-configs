@@ -23,6 +23,7 @@
   in {
     nixosConfigurations.barputer-test = nixpkgs.lib.nixosSystem {
       inherit system;
+      specialArgs.inputs = inputs;
       modules = [
         ./machines/barputer-test
       ];
