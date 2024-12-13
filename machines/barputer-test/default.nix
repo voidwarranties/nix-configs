@@ -12,6 +12,14 @@ in
       ./hardware-configuration.nix
     ];
 
+  # following configuration is added only when building VM with build-vm
+  virtualisation.vmVariant = {
+    virtualisation = {
+      memorySize = 4096;
+      cores = 3;
+    };
+  };
+
   # enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -36,7 +44,6 @@ in
       PermitRootLogin = "yes"; # disable root login over SSH
       PasswordAuthentication = true; # allow auth with password over SSH
     };
-    openFirewall = true; # open relevant ports for SSH
   };
   
   # timezone

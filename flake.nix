@@ -13,15 +13,16 @@
 
   outputs = { self, nixpkgs, devshell, ... }@inputs: 
   let
+    system = "x86_64-linux";
     pkgs = (import nixpkgs {
-      system = "x86_64-linux";
+      inherit system;
       overlays = [
         devshell.overlays.default
       ];
     });
   in {
     nixosConfigurations.barputer-test = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+      inherit system;
       modules = [
         ./machines/barputer-test
       ];
@@ -64,6 +65,14 @@
                   --use-remote-sudo \
                   --fast \
                 "$@"
+              '';
+            }
+            {
+              name = "barputer-vm";
+              help = "run barputer config in a local vm, SSH available on port 2221";
+              command = ''
+                nix build .#nixosConfigurations.barputer-test.config.system.build.vm
+                QEMU_NET_OPTS="hostfwd=tcp::2221-:22" result/bin/run-barputer-test-vm
               '';
             }
           ];
