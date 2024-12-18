@@ -11,15 +11,19 @@
     };
   };
 
-  outputs = { self, nixpkgs, devshell, ... }@inputs: 
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    devshell,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
-    pkgs = (import nixpkgs {
+    pkgs = import nixpkgs {
       inherit system;
       overlays = [
         devshell.overlays.default
       ];
-    });
+    };
   in {
     nixosConfigurations.barputer-test = nixpkgs.lib.nixosSystem {
       inherit system;
@@ -29,20 +33,49 @@
       ];
     };
 
+    formatter = {
+      "x86_64-linux" = pkgs.alejandra;
+    };
+
     packages = {
       "x86_64-linux" = {
-        tab-ui = pkgs.stdenv.mkDerivation {
-          pname = "tab-ui";
-          version = "1.0";
-          src = pkgs.fetchgit {
-            url = "https://github.com/voidwarranties/tab-ui.git";
-            rev = "90c0d413625e53826605c5b92fcc02e5b4a8b736";
-            hash = "sha256-uQ/BIEYArVs0KIwfDNQbqxrTSbwZ6NIgW4KMwz7xSHk=";
-            fetchSubmodules = true;
+        tab-ui = let
+          version = "90c0d413625e53826605c5b92fcc02e5b4a8b736";
+        in
+          pkgs.stdenv.mkDerivation {
+            pname = "tab-ui";
+            version = builtins.substring 0 7 version;
+            src = pkgs.fetchgit {
+              url = "https://github.com/voidwarranties/tab-ui.git";
+              rev = version;
+              hash = "sha256-uQ/BIEYArVs0KIwfDNQbqxrTSbwZ6NIgW4KMwz7xSHk=";
+              fetchSubmodules = true;
+            };
+            buildInputs = [pkgs.qt5.full];
+            nativeBuildInputs = [pkgs.libsForQt5.qmake pkgs.libsForQt5.qt5.wrapQtAppsHook];
           };
-          buildInputs = [ pkgs.qt5.full ];
-          nativeBuildInputs = [ pkgs.libsForQt5.qmake pkgs.libsForQt5.qt5.wrapQtAppsHook ]; 
-        };
+
+        backtab = let
+          version = "c39595e5764134864cab09408ba234db7f933501";
+        in
+          pkgs.python3Packages.buildPythonPackage {
+            pname = "backtab";
+            version = builtins.substring 0 7 version;
+            src = pkgs.fetchFromGitHub {
+              owner = "voidwarranties";
+              repo = "backtab";
+              rev = version;
+              hash = "sha256-/H7WPiZeAvLcp8ZjspwdCm0GG8Z/hk7zQgIuycIXkTQ=";
+            };
+            propagatedBuildInputs = with pkgs.python3Packages; [
+              beancount
+              bottle
+              click
+              pyyaml
+              sdnotify
+            ];
+            meta.mainProgram = "backtab-server";
+          };
       };
     };
 
