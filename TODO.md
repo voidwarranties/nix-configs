@@ -3,7 +3,7 @@
 ## Nix packages and modules for tab-ui and backtab
 
 - [x] Package tab-ui using a Nix flake
-- [ ] Package backtab using a Nix flake
+- [x] Package backtab using a Nix flake
 - [ ] Create a NixOS module for running backtab as a systemd service
   - [ ] Consider sensitive information while building the backtab configuration file
 - [ ] Add tab-ui and backtab packages and nixos modules as inputs to this nix-configs flake
