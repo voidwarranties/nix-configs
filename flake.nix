@@ -11,15 +11,19 @@
     };
   };
 
-  outputs = { self, nixpkgs, devshell, ... }@inputs: 
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    devshell,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
-    pkgs = (import nixpkgs {
+    pkgs = import nixpkgs {
       inherit system;
       overlays = [
         devshell.overlays.default
       ];
-    });
+    };
   in {
     nixosConfigurations.barputer-test = nixpkgs.lib.nixosSystem {
       inherit system;
@@ -28,22 +32,8 @@
         ./machines/barputer-test
       ];
     };
-
-    packages = {
-      "x86_64-linux" = {
-        tab-ui = pkgs.stdenv.mkDerivation {
-          pname = "tab-ui";
-          version = "1.0";
-          src = pkgs.fetchgit {
-            url = "https://github.com/voidwarranties/tab-ui.git";
-            rev = "90c0d413625e53826605c5b92fcc02e5b4a8b736";
-            hash = "sha256-uQ/BIEYArVs0KIwfDNQbqxrTSbwZ6NIgW4KMwz7xSHk=";
-            fetchSubmodules = true;
-          };
-          buildInputs = [ pkgs.qt5.full ];
-          nativeBuildInputs = [ pkgs.libsForQt5.qmake pkgs.libsForQt5.qt5.wrapQtAppsHook ]; 
-        };
-      };
+    formatter = {
+      "x86_64-linux" = pkgs.alejandra;
     };
 
     devShells = {

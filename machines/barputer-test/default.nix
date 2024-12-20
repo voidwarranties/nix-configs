@@ -1,16 +1,20 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, inputs, ... }: let
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: let
   #backtab = pkgs.callPackage ./backtab {};
   #tab-ui = pkgs.libsForQt5.callPackage ../ext/tab-ui {};
-in
-{
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+in {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # following configuration is added only when building VM with build-vm
   virtualisation.vmVariant = {
@@ -21,7 +25,7 @@ in
   };
 
   # enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # garbage collect older nixos generations and bloat
   nix.gc = {
@@ -33,7 +37,7 @@ in
   # boot (systemd-boot)
   boot = {
     loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true; # allow to create bootloader entries on host system 
+    loader.efi.canTouchEfiVariables = true; # allow to create bootloader entries on host system
   };
 
   # openSSH daemon
@@ -45,7 +49,7 @@ in
       PasswordAuthentication = true; # allow auth with password over SSH
     };
   };
-  
+
   # timezone
   time.timeZone = "Europe/Brussels";
 
@@ -89,11 +93,11 @@ in
   users.users.testuser = {
     isNormalUser = true;
     initialPassword = "test1234";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = ["wheel" "networkmanager"];
   };
 
   # Use the GRUB 2 boot loader.
-#  boot.loader.grub.enable = true;
+  #  boot.loader.grub.enable = true;
   # boot.loader.grub.efiSupport = true;
   # boot.loader.grub.efiInstallAsRemovable = true;
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
@@ -122,9 +126,6 @@ in
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
-
-  
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -204,6 +205,4 @@ in
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }
-
