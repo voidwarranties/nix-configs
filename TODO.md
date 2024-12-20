@@ -19,7 +19,7 @@
 
 ## NixOS for Stargazer
 
-- [ ] Evaluate using Nix for Barputer / get potential approval for using Nix on Stargazer
+- [ ] Evaluate using Nix for Barputer / get potential approval from void members for using Nix on Stargazer
 - [ ] Check compatibility of multiseat or consider need for multiseat?
 - [ ] Convert screen casting proof of concept to declerative nixos configuration
 - [ ] Build and deploy Stargazer test VM
