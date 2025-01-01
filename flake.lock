@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "backtab": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1735750445,
+        "narHash": "sha256-mot8A0jbdIYOPOJuC8vBgGjvz0XbQuJyLT2thwA6l3w=",
+        "owner": "voidwarranties",
+        "repo": "backtab",
+        "rev": "821c31d9c603f8e9d6abe194e69a2a9bca8f2a21",
+        "type": "github"
+      },
+      "original": {
+        "owner": "voidwarranties",
+        "ref": "nixos-module",
+        "repo": "backtab",
+        "type": "github"
+      }
+    },
     "devshell": {
       "inputs": {
         "nixpkgs": [
@@ -38,8 +59,30 @@
     },
     "root": {
       "inputs": {
+        "backtab": "backtab",
         "devshell": "devshell",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "tab-ui": "tab-ui"
+      }
+    },
+    "tab-ui": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1735747370,
+        "narHash": "sha256-IP1+1hepiWlttwwK6GwO0traVfK5Kp0JffJMGOz0dYc=",
+        "owner": "voidwarranties",
+        "repo": "tab-ui",
+        "rev": "b5c8a11f951e4585de9f656ac862b6648378b5f3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "voidwarranties",
+        "repo": "tab-ui",
+        "type": "github"
       }
     }
   },
