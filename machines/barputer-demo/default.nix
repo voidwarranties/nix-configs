@@ -1,5 +1,4 @@
 {pkgs}: {modulesPath, ...}: let
-
   i3ConfigFile = pkgs.writeTextFile {
     name = "i3-config";
     text = builtins.readFile ./i3config;

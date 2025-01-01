@@ -24,24 +24,32 @@
     };
   };
 
-  outputs = { self, nixpkgs, devshell, backtab, tab-ui, ... }@inputs:
-  let
+  outputs = {
+    self,
+    nixpkgs,
+    devshell,
+    backtab,
+    tab-ui,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
-    pkgs = (import nixpkgs {
+    pkgs = import nixpkgs {
       inherit system;
       overlays = [
         devshell.overlays.default
         inputs.tab-ui.overlays.default
       ];
-    });
+    };
   in {
+    formatter."x86_64-linux" = pkgs.alejandra;
+
     packages = {
       "x86_64-linux" = {
         barputer-demo =
           (inputs.nixpkgs.lib.nixosSystem {
             inherit system;
             modules = [
-              ({ pkgs, ... }: {
+              ({pkgs, ...}: {
                 nixpkgs.overlays = [
                   inputs.backtab.overlays.default
                 ];
