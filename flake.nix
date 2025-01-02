@@ -10,7 +10,7 @@
     };
 
     backtab = {
-      url = "github:voidwarranties/backtab?ref=nixos-module";
+      url = "github:voidwarranties/backtab";
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };
