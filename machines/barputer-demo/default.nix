@@ -16,7 +16,6 @@ in {
       qemu.options = [
         "-enable-kvm"
         "-vga virtio"
-        "-display gtk,full-screen=on,grab-on-hover=on"
       ];
       forwardPorts = [
         {
@@ -40,6 +39,7 @@ in {
       # public/private keypair to add as a (write enabled) deploy key to the tab ledger repository.
       authorizedKeys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILes7WTtBxDp1ILq+9iF1v2mmiQ0yFPprMREPUO240me"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJM++IIAAG4SJLCDRv3MQ/CoX9CQg/8XhQeJc2uevkv2 eline@stargazer"
       ];
     };
     environment.systemPackages = with pkgs; [
@@ -56,7 +56,6 @@ in {
     services.xserver = {
       enable = true;
       xkb.layout = "us";
-      xkb.variant = "dvorak";
       windowManager.i3 = {
         enable = true;
         extraPackages = with pkgs; [
