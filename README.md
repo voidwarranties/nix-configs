@@ -1,4 +1,5 @@
 # nix-configs
+Nix configurations for various machines and software used at voidwarranties.  
 
-contains packages and config for barputer
-`nix run github:voidwarranties/nix-configs#nixosConfigurations.barputer-test.config.system.build.vm` to test the config in a vm
+## Barputer
+A demo vm configuration for the barputer can be run using `nix run .#barputer-demo`. This will use https://github.com/voidwarranties/backtab and https://github.com/voidwarranties/tab-ui.
