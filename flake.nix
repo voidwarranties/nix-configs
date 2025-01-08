@@ -77,13 +77,13 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
-            ({pkgs, ...}: {
-              nixpkgs.overlays = [
-                inputs.backtab.overlays.default
-                inputs.tab-ui.overlays.default
-              ];
-            })
-            inputs.backtab.nixosModules.backtab
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [
+              inputs.backtab.overlays.default
+              inputs.tab-ui.overlays.default
+            ];
+          })
+          inputs.backtab.nixosModules.backtab
           ./machines/barputer-laptop
         ];
       };
