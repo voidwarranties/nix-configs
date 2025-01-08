@@ -16,6 +16,8 @@ in {
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  networking.interfaces.enp8s0.wakeOnLan.enable = true;
+
   boot = {
     consoleLogLevel = 0;
     kernelParams = ["quiet"];
