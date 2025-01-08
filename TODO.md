@@ -4,11 +4,11 @@
 
 - [x] Package tab-ui using a Nix flake
 - [x] Package backtab using a Nix flake
-- [ ] Create a NixOS module for running backtab as a systemd service
-  - [ ] Consider sensitive information while building the backtab configuration file
-- [ ] Add tab-ui and backtab packages and nixos modules as inputs to this nix-configs flake
-- [ ] Update the barputer-test VM to get a working barputer setup, ideally using a staging / test tab
-      repository (e.g. voidtab-test or something)
+- [x] Create a NixOS module for running backtab as a systemd service
+  - [x] Consider sensitive information while building the backtab configuration file
+- [x] Add tab-ui and backtab packages and nixos modules as inputs to this nix-configs flake
+- [x] Update the barputer-demo VM to get a working barputer setup, using a staging /
+      test tabrepository (e.g. voidtab-test or something)
 
 ## NixOS on barputer hardware
 
