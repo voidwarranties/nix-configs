@@ -35,7 +35,7 @@ in {
     enable = true;
 
     # Point the URL below to the repository where the tab ledger is kept
-    repositoryUrl = "git@github.com:voidwarranties/voidtab-testing.git";
+    repositoryUrl = "git@github.com:voidwarranties/voidtab.git";
 
     # Keys listed below allow users with the accompanying private key to log in as the backtab user via ssh
     # (provided openssh is enabled of course). This can be used to run `ssh-keygen` as the backtab user to generate a
