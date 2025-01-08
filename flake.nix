@@ -72,6 +72,23 @@
   in {
     formatter = forAllSystems (pkgs: pkgs.alejandra);
 
+    nixosConfigurations = {
+      barputer-laptop = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+            ({pkgs, ...}: {
+              nixpkgs.overlays = [
+                inputs.backtab.overlays.default
+                inputs.tab-ui.overlays.default
+              ];
+            })
+            inputs.backtab.nixosModules.backtab
+          ./machines/barputer-laptop
+        ];
+      };
+    };
+
     packages = forAllSystems (pkgs: {
       barputer-demo =
         (inputs.nixpkgs.lib.nixosSystem {
