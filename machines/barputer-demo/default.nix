@@ -42,6 +42,7 @@ in {
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJM++IIAAG4SJLCDRv3MQ/CoX9CQg/8XhQeJc2uevkv2 eline@stargazer"
       ];
     };
+    services.poweroffd.enable = true;
     environment.systemPackages = with pkgs; [
       git
       tab-ui
