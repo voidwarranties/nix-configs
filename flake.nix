@@ -87,6 +87,21 @@
           ./machines/barputer-laptop
         ];
       };
+
+      barputer = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = [
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [
+              inputs.backtab.overlays.default
+              inputs.tab-ui.overlays.default
+            ];
+          })
+          inputs.backtab.nixosModules.backtab
+          ./machines/barputer
+        ];
+      };
     };
 
     packages = forAllSystems (pkgs: {
