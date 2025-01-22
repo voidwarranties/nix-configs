@@ -16,16 +16,19 @@ in {
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  networking.interfaces.enp8s0.wakeOnLan.enable = true;
+  networking.interfaces.enp2s0.wakeOnLan.enable = true;
 
   boot = {
     consoleLogLevel = 0;
     kernelParams = ["quiet"];
     initrd.verbose = false;
-    loader.systemd-boot.enable = true;
-    loader.systemd-boot.configurationLimit = 3;
-    loader.systemd-boot.graceful = true;
-    loader.efi.canTouchEfiVariables = true;
+    loader.grub.enable = true;
+    loader.grub.device = "/dev/sda";
+    loader.grub.useOSProber = true;
+    #loader.systemd-boot.enable = true;
+    #loader.systemd-boot.configurationLimit = 3;
+    #loader.systemd-boot.graceful = true;
+    #loader.efi.canTouchEfiVariables = true;
     plymouth = {
       enable = true;
       theme = "breeze";
