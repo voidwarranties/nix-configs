@@ -74,20 +74,53 @@ in {
       ];
       configFile = i3ConfigFile;
     };
+    extraConfig = ''
+      Section "InputClass"
+        Identifier  "Invert Mouse"
+        MatchProduct    "Elo Serial TouchScreen"
+        MatchDevicePath "/dev/input/event*"
+        Option      "InvertY"       "false"
+        Option      "InvertX"       "false"
+      EndSection
+
+      Section "InputClass"
+        Identifier	"calibration"
+        MatchProduct	"Elo Serial TouchScreen"
+        Driver "libinput"
+        Option  "CalibrationMatrix" "-1 0 1 0 1 0 0 0 1"
+      EndSection
+
+      Section "InputDevice"
+        Driver "elographics"
+        Identifier "touchscreen"
+        Option "ButtonNumber" "1"
+        Option "ButtonThreshold" "17"
+        Option "Device" "/dev/ttyS0"
+        Option "InputFashion" "Touchpanel"
+        Option "MinX" "0"
+        Option "MaxX" "3977"
+        Option "MinY" "96"
+        Option "MaxY" "4062"
+        Option "Name" "touchscreen"
+        Option "ReportingMode" "Scaled"
+        Option "SendCoreEvents" "on"
+        Option "ScreenNo" "0"
+      EndSection
+    '';
   };
   services.displayManager.defaultSession = "none+i3";
   services.displayManager.autoLogin = {
     enable = true;
-    user = "demo";
+    user = "baruser";
   };
 
   security.sudo.wheelNeedsPassword = false;
 
-  users.users.demo = {
+  users.users.baruser = {
     createHome = true;
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel"];
-    initialPassword = "demo";
+    initialPassword = "baruser";
   };
 
   users.users = {
