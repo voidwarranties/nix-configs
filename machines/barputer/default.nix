@@ -49,6 +49,7 @@ in {
     authorizedKeys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILes7WTtBxDp1ILq+9iF1v2mmiQ0yFPprMREPUO240me"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJM++IIAAG4SJLCDRv3MQ/CoX9CQg/8XhQeJc2uevkv2 eline@stargazer"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBa9WsiF3b7e6pszbbDtu7PuwiZemDcfI02n832tVcIX e12l@e12l.be"
     ];
   };
 
@@ -113,6 +114,15 @@ in {
     enable = true;
     user = "baruser";
   };
+
+  systemd.services.elotouch = {
+      wantedBy = [ "multi-user.target" ];
+      after = [ "network.target" ];
+      description = "Start touchscreen driver";
+      serviceConfig = {
+        ExecStart = ''${pkgs.linuxConsoleTools}/bin/inputattach -elo /dev/ttyS0''; 
+      };
+   };
 
   security.sudo.wheelNeedsPassword = false;
 
