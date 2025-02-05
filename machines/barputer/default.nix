@@ -19,20 +19,9 @@ in {
   networking.interfaces.enp2s0.wakeOnLan.enable = true;
 
   boot = {
-    consoleLogLevel = 0;
-    kernelParams = ["quiet"];
-    initrd.verbose = false;
     loader.grub.enable = true;
     loader.grub.device = "/dev/sda";
     loader.grub.useOSProber = true;
-    #loader.systemd-boot.enable = true;
-    #loader.systemd-boot.configurationLimit = 3;
-    #loader.systemd-boot.graceful = true;
-    #loader.efi.canTouchEfiVariables = true;
-    plymouth = {
-      enable = true;
-      theme = "breeze";
-    };
   };
 
   services.openssh.enable = true;
