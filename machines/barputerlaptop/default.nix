@@ -59,7 +59,7 @@ in {
     tab-ui
   ];
 
-  networking.hostName = "barputer-laptop";
+  networking.hostName = "barputerlaptop";
 
   # Localization
   time.timeZone = "Europe/Brussels";

@@ -81,7 +81,7 @@
     formatter = forAllSystems (pkgs: pkgs.alejandra);
 
     nixosConfigurations = {
-      barputer-laptop = nixpkgs.lib.nixosSystem {
+      barputerlaptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
         modules = [
@@ -93,7 +93,7 @@
           })
           inputs.backtab.nixosModules.backtab
           inputs.poweroffd.nixosModules.poweroffd
-          ./machines/barputer-laptop
+          ./machines/barputerlaptop
         ];
       };
 
