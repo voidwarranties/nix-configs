@@ -22,6 +22,13 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+
+    poweroffd = {
+      url = "github:voidwarranties/poweroffd";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
   };
 
   outputs = {
@@ -30,6 +37,7 @@
     devshell,
     backtab,
     tab-ui,
+    poweroffd,
     ...
   } @ inputs: let
     # This list of architectures provides the supported systems to the wrapper function below.
@@ -84,6 +92,7 @@
             ];
           })
           inputs.backtab.nixosModules.backtab
+          inputs.poweroffd.nixosModules.poweroffd
           ./machines/barputer-laptop
         ];
       };
