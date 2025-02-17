@@ -34,7 +34,7 @@ in {
   services.openssh.enable = true;
 
   services.poweroffd = {
-    enable = false;
+    enable = true;
     mqttHost = "10.98.71.22";
     mqttTopic = "computers/${config.networking.hostName}";
   };
