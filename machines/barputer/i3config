@@ -158,7 +158,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # NOTE(m): Hide mouse
-unclutter -idle 0.5 -root &
+exec_always --no-startup-id unclutter -idle 0.5 -root &
 
 for_window [class="tab"] border none
 exec_always --no-startup-id tab-ui http://127.0.0.1:4903 &
