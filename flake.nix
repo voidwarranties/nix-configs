@@ -108,6 +108,7 @@
             ];
           })
           inputs.backtab.nixosModules.backtab
+          inputs.poweroffd.nixosModules.poweroffd
           ./machines/barputer
         ];
       };
