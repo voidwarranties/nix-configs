@@ -51,8 +51,9 @@ in {
 
   environment.systemPackages = with pkgs; [
     git
-    tab-ui
     linuxConsoleTools
+    tab-ui
+    unclutter
   ];
 
   networking.hostName = "barputer";
