@@ -40,13 +40,34 @@
         "type": "github"
       }
     },
+    "devshell_2": {
+      "inputs": {
+        "nixpkgs": [
+          "tab-ui",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1735644329,
+        "narHash": "sha256-tO3HrHriyLvipc4xr+Ewtdlo7wM1OjXNjlWRgmM7peY=",
+        "owner": "numtide",
+        "repo": "devshell",
+        "rev": "f7795ede5b02664b57035b3b757876703e2c3eac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "devshell",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1739357830,
-        "narHash": "sha256-9xim3nJJUFbVbJCz48UP4fGRStVW5nv4VdbimbKxJ3I=",
+        "lastModified": 1741048562,
+        "narHash": "sha256-W4YZ3fvWZiFYYyd900kh8P8wU6DHSiwaH0j4+fai1Sk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0ff09db9d034a04acd4e8908820ba0b410d7a33a",
+        "rev": "6af28b834daca767a7ef99f8a7defa957d0ade6f",
         "type": "github"
       },
       "original": {
@@ -87,16 +108,17 @@
     },
     "tab-ui": {
       "inputs": {
+        "devshell": "devshell_2",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1735816705,
-        "narHash": "sha256-72zwXQHJThbEu86fZM9v8+UnSm4tKkPlKGgOkGsCksM=",
+        "lastModified": 1741213366,
+        "narHash": "sha256-OC0I7phfySQG0CbXsinVihkQ4Dz+x4V8lvUL1rj/K3s=",
         "owner": "voidwarranties",
         "repo": "tab-ui",
-        "rev": "c0678ff966aad14a150248a66e84e120d45c84ce",
+        "rev": "db776b56e700ae7a2166b5270c3f6e37e5c3035b",
         "type": "github"
       },
       "original": {

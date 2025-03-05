@@ -51,9 +51,8 @@ in {
 
   environment.systemPackages = with pkgs; [
     git
-    linuxConsoleTools
     tab-ui
-    unclutter
+    linuxConsoleTools
   ];
 
   networking.hostName = "barputer";
@@ -120,6 +119,8 @@ in {
         ExecStart = ''${pkgs.linuxConsoleTools}/bin/inputattach -elo /dev/ttyS0''; 
       };
    };
+
+  services.unclutter.enable = true; # hide cursor 
 
   security.sudo.wheelNeedsPassword = false;
 
