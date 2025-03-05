@@ -51,6 +51,8 @@ in {
     authorizedKeys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILes7WTtBxDp1ILq+9iF1v2mmiQ0yFPprMREPUO240me"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJM++IIAAG4SJLCDRv3MQ/CoX9CQg/8XhQeJc2uevkv2 eline@stargazer"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAXyGbpul93Y7ibDPqEdZxw7Tt8gIaTOmTOdlSNOak8i koen@devoegt.be"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHleKo03/jmf/ti0OGJF1it5FSP526Y7LSqyVfNDyEYc snow@lies"
     ];
   };
 

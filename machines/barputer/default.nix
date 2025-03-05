@@ -28,7 +28,7 @@ in {
 
   services.poweroffd = {
     enable = true;
-    mqttHost = "10.98.71.21";
+    mqttHost = "10.98.71.22";
     mqttTopic = "computers/${config.networking.hostName}";
   };
 
